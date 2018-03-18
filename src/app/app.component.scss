@@ -25,7 +25,8 @@
     height: 50px;
     background-color: $primary;
     color: white;
-    border-right: 1px solid rgba(211, 211, 211, 0.66);
+    //border-right: 1px solid rgba(211, 211, 211, 0.50);
+    border-right: 1px solid $primary-dark;
     z-index: 2;
     padding-left: 18px;
     .app-title {
@@ -39,9 +40,9 @@
 
 .sidebar-content {
     flex-grow: 1;
-    background-color: #233440;
+    background-color: $primary-dark;
     color: white;
-    border-right: 1px solid rgba(211, 211, 211, 0.66);
+    //border-right: 1px solid rgba(211, 211, 211, 0.50);
     z-index: 2;
     .side-item {
         display: inline-flex;
@@ -64,7 +65,7 @@
     flex-grow: 1;
     background-color: rgba(198, 198, 198, 0.2);
     .main-content-top-row {
-        box-shadow: 0 2px 3px lightgrey;
+        box-shadow: 0 2px 3px #b9b9b9;
         background-color: $primary;
         color: white;
         height: 50px;
