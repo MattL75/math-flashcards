@@ -1,0 +1,98 @@
+@import "../../assets/variables.scss";
+
+:host {
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    -webkit-transition: box-shadow .28s cubic-bezier(.4,0,.2,1);
+    transition: box-shadow .28s cubic-bezier(.4,0,.2,1);
+    will-change: box-shadow;
+    display: block;
+    position: relative;
+    padding: 24px;
+    border-radius: 2px;
+    font-size: 36px;
+    color: $text;
+}
+
+.firstDigit {
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.flashcard-top {
+    margin-bottom: 20px;
+}
+
+.second-container {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flashcard-bottom {
+    display: inline-flex;
+    flex-grow: 1;
+    padding-top: 25px;
+    border-top: 2px solid $text;
+}
+
+.operator {
+    margin-right: 30px;
+}
+
+.answer-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    .answer {
+        height: 40px;
+        width: 75%;
+        font-size: 36px;
+        text-align: right;
+        background-color: rgba(211, 211, 211, 0.42);
+        border-radius: 2px;
+        border: 1px solid rgba(211, 211, 211, 0.42);
+        //border-bottom: 1px solid $text;
+        &:focus {
+            outline: none;
+            box-shadow: 0 1px 5px lightgrey;
+        }
+        &::placeholder {
+
+        }
+    }
+}
+
+.static-answer {
+    justify-content: flex-end;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.overlay-container {
+    overflow: visible;
+    padding-right: 2px;
+    height: 0;
+    margin-top: -2px;
+}
+
+.animation-container {
+    border-radius: 50%;
+    background-color: $success;
+    border: 1px solid $success;
+    //border: 1px solid $primary;
+    //background-color: $primary;
+    height: 45px;
+    width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.check-icon {
+    color: white;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
