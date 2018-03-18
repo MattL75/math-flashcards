@@ -3,5 +3,6 @@
     "mode.unlimited": "Sans fin",
     "mode.timer": "Chrono",
     "mode.limit": "Temps limite",
-    "mode.leader": "Classement"
+    "mode.leader": "Classement",
+    "answer.placeholder": "Entrez réponse"
 }

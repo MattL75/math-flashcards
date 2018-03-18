@@ -3,5 +3,6 @@
     "mode.unlimited": "Unlimited",
     "mode.timer": "Timer",
     "mode.limit": "Time Limit",
-    "mode.leader": "Leaderboards"
+    "mode.leader": "Leaderboards",
+    "answer.placeholder": "Enter answer"
 }
