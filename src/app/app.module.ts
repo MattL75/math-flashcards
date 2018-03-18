@@ -1,12 +1,17 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
-
 import {AppComponent} from './app.component';
 import {L10nConfig, L10nLoader, ProviderType, StorageStrategy, TranslationModule} from 'angular-l10n';
 import {RouterModule, Routes} from '@angular/router';
-import {HttpClient, HttpClientModule, HttpHandler} from '@angular/common/http';
-import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
+import {FlashcardComponent} from './flashcard/flashcard.component';
+import {TimedComponent} from './game-modes/timed/timed.component';
+import {LimitComponent} from './game-modes/limit/limit.component';
+import {UnlimitedComponent} from './game-modes/unlimited/unlimited.component';
+import {LeaderboardsComponent} from './leaderboards/leaderboards.component';
+import {FormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const l10nConfig: L10nConfig = {
     locale: {
@@ -26,21 +31,26 @@ const l10nConfig: L10nConfig = {
     }
 };
 
-const appRoutes: Routes = [
-];
+const appRoutes: Routes = [];
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        FlashcardComponent,
+        TimedComponent,
+        LimitComponent,
+        UnlimitedComponent,
+        LeaderboardsComponent
     ],
     imports: [
         BrowserModule,
         RouterModule.forRoot(appRoutes),
         TranslationModule.forRoot(l10nConfig),
         HttpClientModule,
+        FormsModule,
+        BrowserAnimationsModule
     ],
-    providers: [
-    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {
