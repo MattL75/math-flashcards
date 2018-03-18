@@ -1,22 +1,22 @@
 <div class="main-app-div flex-row">
-    <div *ngIf="getOpen()" class="sidebar-column flex-column">
+    <div [ngClass]="!getOpen() ? 'sidebar-gone': null" class="sidebar-column flex-column">
         <div class="sidebar-top flex-row">
             <span class="app-title">{{ 'app.title' | translate:lang }}</span>
         </div>
         <div class="sidebar-content flex-column">
-            <span class="side-item flex-row">
+            <span routerLink="/unlimited" routerLinkActive="active" class="side-item flex-row">
                 <i class="side-icon mt-icon">loop</i>
                 <span class="side-text">{{ 'mode.unlimited' | translate:lang }}</span>
             </span>
-            <span class="side-item flex-row">
+            <span routerLink="/timed" routerLinkActive="active" class="side-item flex-row">
                 <i class="side-icon mt-icon">timer</i>
                 <span class="side-text">{{ 'mode.timer' | translate:lang }}</span>
             </span>
-            <span class="side-item flex-row">
+            <span routerLink="/limit" routerLinkActive="active" class="side-item flex-row">
                 <i class="side-icon mt-icon">timelapse</i>
                 <span class="side-text">{{ 'mode.limit' | translate:lang }}</span>
             </span>
-            <span class="side-item flex-row">
+            <span routerLink="/leaderboards" routerLinkActive="active" class="side-item flex-row">
                 <i class="side-icon mt-icon">star_border</i>
                 <span class="side-text">{{ 'mode.leader' | translate:lang }}</span>
             </span>
@@ -25,11 +25,12 @@
     <div class="main-content-col flex-column">
         <div class="main-content-top-row flex-row">
             <i (click)="switchOpen()" class="menu-icon mt-icon">menu</i>
-            <span>
-                <button *ngIf="lang != 'en'" (click)="selectLanguage('en');">English</button>
-                <button *ngIf="lang != 'fr'" (click)="selectLanguage('fr');">Francais</button>
+            <span class="flex-row">
+                <span *ngIf="lang != 'en'" (click)="selectLanguage('en')" class="language">En</span>
+                <span *ngIf="lang != 'fr'" (click)="selectLanguage('fr')" class="language">Fr</span>
             </span>
         </div>
+        <div *ngIf="getOpen()" (click)="switchOpen()" class="content-overlay"></div>
         <router-outlet></router-outlet>
     </div>
 </div>

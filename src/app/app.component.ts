@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Language, LocaleService} from 'angular-l10n';
 
 @Component({
@@ -6,7 +6,7 @@ import {Language, LocaleService} from 'angular-l10n';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     @Language() lang: string;
     private menuOpen = true;
     constructor(public locale: LocaleService) {}
@@ -21,5 +21,11 @@ export class AppComponent {
 
     switchOpen(): void {
         this.menuOpen = !this.menuOpen;
+    }
+
+    ngOnInit() {
+        if (window.screen.width < 800) {
+            this.menuOpen = false;
+        }
     }
 }

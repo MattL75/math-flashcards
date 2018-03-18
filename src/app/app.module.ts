@@ -31,7 +31,14 @@ const l10nConfig: L10nConfig = {
     }
 };
 
-const appRoutes: Routes = [];
+const appRoutes: Routes = [
+    { path: '',     redirectTo: '/unlimited', pathMatch: 'full'},
+    { path: 'unlimited', component: UnlimitedComponent},
+    { path: 'timed', component: TimedComponent},
+    { path: 'limit', component: LimitComponent},
+    { path: 'leaderboards', component: LeaderboardsComponent}
+
+];
 
 @NgModule({
     declarations: [
