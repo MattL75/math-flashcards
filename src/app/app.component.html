@@ -1,7 +1,7 @@
 <div class="main-app-div flex-row">
     <div [ngClass]="!getOpen() ? 'sidebar-gone': null" class="sidebar-column flex-column">
         <div class="sidebar-top flex-row">
-            <span class="app-title">{{ 'app.title' | translate:lang }}</span>
+            <span (click)="switchOpen()" class="app-title">{{ 'app.title' | translate:lang }}</span>
         </div>
         <div class="sidebar-content flex-column">
             <span routerLink="/unlimited" routerLinkActive="active" class="side-item flex-row">

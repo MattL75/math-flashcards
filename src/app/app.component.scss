@@ -23,7 +23,7 @@
     min-width: 250px;
     overflow: hidden;
     margin-left: 0;
-    transition: margin-left 0.75s ease;
+    transition: margin-left 0.75s ease, box-shadow 0.75s ease;
 }
 
 .sidebar-gone {
@@ -32,11 +32,12 @@
 }
 
 .content-overlay {
+    position: absolute;
     opacity: 0.6;
     background-color: black;
-    position: absolute;
     height: 100%;
     width: 100%;
+    transition: opacity 0.75s ease, background-color 0.75s ease;
     @media screen and (min-width: 800px) {
         display: none;
         width: 0;
