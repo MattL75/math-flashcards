@@ -8,9 +8,12 @@
     display: block;
     position: relative;
     padding: 24px;
+    padding-top: 20px;
     border-radius: 2px;
     font-size: 36px;
     color: $text;
+    min-width: 100px;
+    width: 100px;
 }
 
 .firstDigit {
@@ -19,7 +22,7 @@
 }
 
 .flashcard-top {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .second-container {
@@ -30,7 +33,7 @@
 .flashcard-bottom {
     display: inline-flex;
     flex-grow: 1;
-    padding-top: 25px;
+    padding-top: 20px;
     border-top: 2px solid $text;
 }
 
@@ -42,9 +45,11 @@
     flex-grow: 1;
     display: flex;
     justify-content: flex-end;
+    align-self: flex-end;
     .answer {
         height: 40px;
-        width: 75%;
+        width: 100%;
+        min-width: 0;
         font-size: 36px;
         text-align: right;
         background-color: rgba(211, 211, 211, 0.42);
@@ -68,23 +73,24 @@
 }
 
 .overlay-container {
-    overflow: visible;
-    padding-right: 2px;
-    height: 0;
-    margin-top: -2px;
 }
 
 .animation-container {
     border-radius: 50%;
-    background-color: $success;
-    border: 1px solid $success;
-    //border: 1px solid $primary;
-    //background-color: $primary;
-    height: 45px;
-    width: 45px;
+    //background-color: $success;
+    background-color: $primary;
+    border: 1px solid $primary;
+    height: 50px;
+    width: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 0;
+    bottom: 0;
 }
 
 .check-icon {

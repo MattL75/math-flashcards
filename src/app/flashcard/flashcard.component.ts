@@ -9,15 +9,15 @@ import {animate, animateChild, group, keyframes, query, state, style, transition
     animations: [
         trigger('heartbeat', [
             state('0', style({
-                transform: 'scale3d(0, 0, 0)'
+                transform: 'scale3d(0, 0, 0)', display: 'none',
             })),
             state('1', style({
-                transform: 'scale3d(1, 1, 1)'
+                transform: 'scale3d(1, 1, 1)', display: 'flex'
             })),
             transition('0 => 1', [
                 group([
                     query('@*', animateChild(), {optional: true}),
-                    animate('600ms 0ms ease-in-out', keyframes([
+                    animate('500ms 0ms ease-in-out', keyframes([
                         style({ transform: 'scale3d(0, 0, 0)', offset: 0 }),
                         style({ transform: 'scale3d(1.05, 1.05, 1.05)', offset: 0.75 }),
                         style({ transform: 'scale3d(1, 1, 1)', offset: 1.0 }),
@@ -27,38 +27,52 @@ import {animate, animateChild, group, keyframes, query, state, style, transition
             transition('1 => 0', [
                 group([
                     query('@*', animateChild(), {optional: true}),
-                    animate('600ms 0ms ease-in-out', keyframes([
+                    animate('500ms 0ms ease-in-out', keyframes([
                         style({ transform: 'scale3d(1, 1, 1)', offset: 0 }),
                         style({ transform: 'scale3d(1.05, 1.05, 1.05)', offset: 0.25 }),
                         style({ transform: 'scale3d(0, 0, 0)', offset: 1.0 }),
                     ])),
                 ]),
             ]),
-        ]),
+        ])
     ],
 })
 export class FlashcardComponent implements OnInit {
     @Language() lang: string;
-    @Input() maxDigit = 13;
-    @Input() minDigit = 0;
-    @Input() mode = 0;          // 0 for regular, 1 for algebra
-    @Input() operators = 2;     // + is 1, - is 2 etc.
+    @Input() maxDigit1 = 10;
+    @Input() minDigit1 = 0;
+    @Input() maxDigit2 = 10;
+    @Input() minDigit2 = 0;
+    @Input() mode = 0;                  // 0 for regular, 1 for algebra
+    @Input() operators = [0, 1];        // + is 0, - is 1 etc.
     firstNum;
     secondNum;
     operator;
     input = '';
+    done = false;
 
     constructor() {
     }
 
     ngOnInit() {
-        this.firstNum = Math.floor(Math.random() * this.maxDigit) + this.minDigit;
-        this.secondNum = Math.floor(Math.random() * this.maxDigit) + this.minDigit;
-        this.operator = Math.floor(Math.random() * this.operators);
+        this.firstNum = Math.floor(Math.random() * this.maxDigit1) + this.minDigit1;
+        this.secondNum = Math.floor(Math.random() * this.maxDigit2) + this.minDigit2;
+        this.operator = this.operators[Math.floor(Math.random() * this.operators.length)];
+        if (this.operator === 4 && !Number.isInteger(this.firstNum / this.secondNum)) {
+            this.ngOnInit();
+        }
+
+        // TEMPORARY TILL BUGFIX
+        if (this.getAnswer() === 0) {
+            this.ngOnInit();
+        }
     }
 
     checkAnswer(): boolean {
-        return Number(this.input) === this.getAnswer();
+        if (this.input && this.input !== '') {
+            return Number(this.input) === this.getAnswer();
+        }
+        return false;
     }
 
     getAnswer(): number {
@@ -84,6 +98,12 @@ export class FlashcardComponent implements OnInit {
             case 1: return '-';
             case 2: return 'x';
             case 3: return '÷';
+        }
+    }
+
+    setDone() {
+        if (this.checkAnswer()) {
+            this.done = true;
         }
     }
 }
