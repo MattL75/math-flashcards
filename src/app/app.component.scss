@@ -37,6 +37,7 @@
     background-color: black;
     height: 100%;
     width: 100%;
+    z-index: 1;
     transition: opacity 0.75s ease, background-color 0.75s ease;
     @media screen and (min-width: 800px) {
         display: none;
@@ -81,11 +82,12 @@
         user-select: none;
         flex-wrap: nowrap;
         white-space: nowrap;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
         &:focus {
             outline: none;
         }
         &:hover {
-            background-color: rgba(126, 126, 126, 0.33);
+            background-color: rgba(126, 126, 126, 0.17);
         }
         .side-icon {
             padding-right: 10px;
@@ -118,7 +120,8 @@
 
 .active {
     box-shadow: inset 5px 0 0 $accent;
-    transition: box-shadow 0.3s ease;
+    background-color: rgba(126, 126, 126, 0.25);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .language {
@@ -126,6 +129,6 @@
     padding: 0 10px;
     cursor: pointer;
     &:hover {
-        background-color: rgba(211, 211, 211, 0.15);
+        background-color: rgba(211, 211, 211, 0.15) !important;
     }
 }
