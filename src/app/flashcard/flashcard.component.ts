@@ -45,11 +45,11 @@ export class FlashcardComponent implements OnInit {
     @Input() minDigit2 = 0;
     @Input() mode = 0;                  // 0 for regular, 1 for algebra
     @Input() operators = [0, 1];        // + is 0, - is 1 etc.
+    @Input() done = false;
     firstNum;
     secondNum;
     operator;
     input = '';
-    done = false;
 
     constructor() {
     }
@@ -61,18 +61,10 @@ export class FlashcardComponent implements OnInit {
         if (this.operator === 4 && !Number.isInteger(this.firstNum / this.secondNum)) {
             this.ngOnInit();
         }
-
-        // TEMPORARY TILL BUGFIX
-        if (this.getAnswer() === 0) {
-            this.ngOnInit();
-        }
     }
 
     checkAnswer(): boolean {
-        if (this.input && this.input !== '') {
-            return Number(this.input) === this.getAnswer();
-        }
-        return false;
+        return Number(this.input) === this.getAnswer();
     }
 
     getAnswer(): number {
@@ -101,7 +93,7 @@ export class FlashcardComponent implements OnInit {
         }
     }
 
-    setDone() {
+    checkConditions() {
         if (this.checkAnswer()) {
             this.done = true;
         }
