@@ -4,5 +4,6 @@
     "mode.timer": "Chrono",
     "mode.limit": "Temps limite",
     "mode.leader": "Classement",
+    "mode.settings": "Parametres",
     "answer.placeholder": "Entrez réponse"
 }

@@ -4,5 +4,6 @@
     "mode.timer": "Timer",
     "mode.limit": "Time Limit",
     "mode.leader": "Leaderboards",
+    "mode.settings": "Settings",
     "answer.placeholder": "Enter answer"
 }
