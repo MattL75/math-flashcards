@@ -12,6 +12,7 @@ import {UnlimitedComponent} from './game-modes/unlimited/unlimited.component';
 import {LeaderboardsComponent} from './leaderboards/leaderboards.component';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { SettingsComponent } from './settings/settings.component';
 
 const l10nConfig: L10nConfig = {
     locale: {
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
     { path: 'unlimited', component: UnlimitedComponent},
     { path: 'timed', component: TimedComponent},
     { path: 'limit', component: LimitComponent},
-    { path: 'leaderboards', component: LeaderboardsComponent}
+    { path: 'leaderboards', component: LeaderboardsComponent},
+    { path: 'settings', component: SettingsComponent}
 
 ];
 
@@ -47,7 +49,8 @@ const appRoutes: Routes = [
         TimedComponent,
         LimitComponent,
         UnlimitedComponent,
-        LeaderboardsComponent
+        LeaderboardsComponent,
+        SettingsComponent
     ],
     imports: [
         BrowserModule,
