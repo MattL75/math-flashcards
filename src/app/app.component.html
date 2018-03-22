@@ -31,6 +31,8 @@
             </span>
         </div>
         <div *ngIf="getOpen()" (click)="switchOpen()" class="content-overlay"></div>
-        <router-outlet></router-outlet>
+        <div class="router">
+            <router-outlet></router-outlet>
+        </div>
     </div>
 </div>

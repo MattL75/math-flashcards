@@ -5,14 +5,15 @@ import {AppComponent} from './app.component';
 import {L10nConfig, L10nLoader, ProviderType, StorageStrategy, TranslationModule} from 'angular-l10n';
 import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
-import {FlashcardComponent} from './flashcard/flashcard.component';
-import {TimedComponent} from './game-modes/timed/timed.component';
-import {LimitComponent} from './game-modes/limit/limit.component';
-import {UnlimitedComponent} from './game-modes/unlimited/unlimited.component';
-import {LeaderboardsComponent} from './leaderboards/leaderboards.component';
+import {FlashcardComponent} from './components/flashcard/flashcard.component';
+import {TimedComponent} from './components/game-modes/timed/timed.component';
+import {LimitComponent} from './components/game-modes/limit/limit.component';
+import {UnlimitedComponent} from './components/game-modes/unlimited/unlimited.component';
+import {LeaderboardsComponent} from './components/leaderboards/leaderboards.component';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { SettingsComponent } from './settings/settings.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import {SettingsService} from './services/settings.service';
 
 const l10nConfig: L10nConfig = {
     locale: {

@@ -1,0 +1,8 @@
+{
+    "maxDigit1": 10,
+    "maxDigit2": 10,
+    "minDigit1": 1,
+    "minDigit2": 1,
+    "mode": 0,
+    "operators": [0, 1]
+}
