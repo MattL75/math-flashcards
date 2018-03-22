@@ -1,0 +1,8 @@
+<div class="main-unlimited-container">
+    <div class="unlimited-card-helper" *ngFor="let x of helperArray">
+        <app-flashcard [config]="getConfig()"
+                       (whenDone)="checkState()"
+                       #flashcard>
+        </app-flashcard>
+    </div>
+</div>

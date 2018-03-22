@@ -1,0 +1,16 @@
+:host {
+    display: flex;
+}
+
+.main-unlimited-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.unlimited-card-helper {
+    display: flex;
+    margin: 10px;
+}
