@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Language} from 'angular-l10n';
-import {animate, animateChild, group, keyframes, query, state, style, transition, trigger} from '@angular/animations';
+import {animate, animateChild, group, keyframes, query, style, transition, trigger} from '@angular/animations';
+import {AppConfig} from '../../models/app-config';
 
 @Component({
     selector: 'app-flashcard',
@@ -8,13 +9,7 @@ import {animate, animateChild, group, keyframes, query, state, style, transition
     styleUrls: ['./flashcard.component.scss'],
     animations: [
         trigger('heartbeat', [
-            state('0', style({
-                transform: 'scale3d(0, 0, 0)', display: 'none',
-            })),
-            state('1', style({
-                transform: 'scale3d(1, 1, 1)', display: 'flex'
-            })),
-            transition('0 => 1', [
+            transition(':enter', [
                 group([
                     query('@*', animateChild(), {optional: true}),
                     animate('500ms 0ms ease-in-out', keyframes([
@@ -24,7 +19,7 @@ import {animate, animateChild, group, keyframes, query, state, style, transition
                     ])),
                 ]),
             ]),
-            transition('1 => 0', [
+            transition(':leave', [
                 group([
                     query('@*', animateChild(), {optional: true}),
                     animate('500ms 0ms ease-in-out', keyframes([
@@ -39,22 +34,29 @@ import {animate, animateChild, group, keyframes, query, state, style, transition
 })
 export class FlashcardComponent implements OnInit {
     @Language() lang: string;
+    @Output() whenDone = new EventEmitter<boolean>();
     @Input() maxDigit1 = 10;
     @Input() minDigit1 = 0;
     @Input() maxDigit2 = 10;
     @Input() minDigit2 = 0;
     @Input() mode = 0;                  // 0 for regular, 1 for algebra
     @Input() operators = [0, 1];        // + is 0, - is 1 etc.
-    @Input() done = false;
+    @Input() config: AppConfig;         // Could also be done by injection, but meh.
     firstNum;
     secondNum;
     operator;
     input = '';
+    done = false;
 
     constructor() {
     }
 
     ngOnInit() {
+        if (this.config) {
+            this.translateConfig();
+        }
+        this.done = false;
+        this.input = '';
         this.firstNum = Math.floor(Math.random() * this.maxDigit1) + this.minDigit1;
         this.secondNum = Math.floor(Math.random() * this.maxDigit2) + this.minDigit2;
         this.operator = this.operators[Math.floor(Math.random() * this.operators.length)];
@@ -96,6 +98,16 @@ export class FlashcardComponent implements OnInit {
     checkConditions() {
         if (this.checkAnswer()) {
             this.done = true;
+            this.whenDone.emit(true);
         }
+    }
+
+    private translateConfig() {
+        this.maxDigit1 = this.config.maxDigit1;
+        this.maxDigit2 = this.config.maxDigit2;
+        this.minDigit1 = this.config.minDigit1;
+        this.minDigit2 = this.config.minDigit2;
+        this.mode = this.config.mode;
+        this.operators = this.config.operators;
     }
 }

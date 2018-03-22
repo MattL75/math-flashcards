@@ -1,6 +1,6 @@
 <div class="flashcard-main flex-column">
     <div class="overlay-container">
-        <div [@heartbeat]="done" class="animation-container">
+        <div [@heartbeat] *ngIf="done" class="animation-container">
             <i class="mt-icon check-icon">check</i>
         </div>
     </div>
