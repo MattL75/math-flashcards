@@ -3,6 +3,7 @@ import {animate, style, transition, trigger} from '@angular/animations';
 import {SettingsService} from '../../../services/settings.service';
 import {AppConfig} from '../../../models/app-config';
 import {FlashcardComponent} from '../../flashcard/flashcard.component';
+import {Language} from 'angular-l10n';
 
 @Component({
     selector: 'app-unlimited',
@@ -11,9 +12,11 @@ import {FlashcardComponent} from '../../flashcard/flashcard.component';
     animations: []
 })
 export class UnlimitedComponent implements OnInit {
+    @Language() lang: string;
     @ViewChildren('flashcard') cards: QueryList<FlashcardComponent>;
     simulCards = 14;
     finished = 0;
+    total = 0;
     helperArray = new Array(this.simulCards);
 
     constructor(private settings: SettingsService) {
@@ -36,9 +39,11 @@ export class UnlimitedComponent implements OnInit {
 
     checkState() {
         ++this.finished;
+        ++this.total;
         if (this.finished === this.simulCards) {
             this.cards.forEach(card => {
                 card.ngOnInit();
+                card.done = false;
             });
             this.finished = 0;
         }

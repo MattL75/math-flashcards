@@ -1,5 +1,7 @@
 :host {
     display: flex;
+    padding-bottom: 40px;
+    flex-direction: column;
 }
 
 .main-unlimited-container {
@@ -13,4 +15,12 @@
 .unlimited-card-helper {
     display: flex;
     margin: 10px;
+}
+
+.info-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 40px;
+    padding-top: 10px;
 }
