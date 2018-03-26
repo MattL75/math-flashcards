@@ -82,8 +82,8 @@
         user-select: none;
         flex-wrap: nowrap;
         white-space: nowrap;
-        //transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        transition: box-shadow 0.3s ease;
+        transition: background-color 0.3s linear, box-shadow 0.3s ease;
+        //transition: box-shadow 0.3s ease;
         &:focus {
             outline: none;
         }
@@ -127,7 +127,8 @@
 }
 
 .router {
-    padding: 40px;
+    padding-right: 40px;
+    padding-left: 40px;
     height: 100%;
     overflow: auto;
 }
