@@ -60,7 +60,7 @@ export class FlashcardComponent implements OnInit {
         this.firstNum = Math.floor(Math.random() * this.maxDigit1) + this.minDigit1;
         this.secondNum = Math.floor(Math.random() * this.maxDigit2) + this.minDigit2;
         this.operator = this.operators[Math.floor(Math.random() * this.operators.length)];
-        if (this.operator === 4 && !Number.isInteger(this.firstNum / this.secondNum)) {
+        if ((this.operator === 4 && !Number.isInteger(this.firstNum / this.secondNum)) || this.firstNum === this.secondNum) {
             this.ngOnInit();
         }
     }

@@ -30,7 +30,7 @@
                 <span *ngIf="lang != 'fr'" (click)="selectLanguage('fr')" class="language">Fr</span>
             </span>
         </div>
-        <div *ngIf="getOpen()" (click)="switchOpen()" class="content-overlay"></div>
+        <div [ngClass]="{'content-overlay-open': getOpen()}" (click)="switchOpen()" class="content-overlay"></div>
         <div class="router">
             <router-outlet></router-outlet>
         </div>

@@ -1,3 +1,5 @@
+@import "../../../../assets/variables.scss";
+
 :host {
     display: flex;
     padding-bottom: 40px;
@@ -20,7 +22,7 @@
 .info-container {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     height: 40px;
-    padding-top: 10px;
+    margin-top: 10px;
 }
